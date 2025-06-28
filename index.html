@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <lin rel=""icon" href="https://digitalquantumclone.com/favicon.ico">
+    <link rel="icon" href="https://digitalquantumclone.com/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Quantum Clone - Your Future, Reimagined</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -111,6 +111,60 @@
             background-clip: text;
             color: transparent;
         }
+
+        /* Animated gradient border */
+        .animated-gradient-border {
+            position: relative;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #111827, #374151);
+            padding: 2px;
+        }
+
+        .animated-gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.5rem;
+            padding: 2px;
+            background: linear-gradient(
+                45deg,
+                #49C6E5,
+                #E879F9,
+                #F97316,
+                #49C6E5,
+                #E879F9,
+                #F97316
+            );
+            background-size: 400% 400%;
+            animation: gradient-animation 3s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-gradient-border .inner-content {
+            position: relative;
+            background: #1F2937;
+            border-radius: 0.375rem;
+            z-index: 1;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -151,8 +205,8 @@
             </div>
             
             <!-- Carousel -->
-            <div class="gradient-border p-1 rounded-lg max-w-4xl mx-auto">
-                <div class="bg-gray-800 rounded-lg p-8">
+            <div class="animated-gradient-border max-w-4xl mx-auto">
+                <div class="inner-content bg-gray-800 rounded-lg p-8">
                     <div class="carousel">
                         <div class="carousel-item active">
                             <div class="flex flex-col md:flex-row items-center">
